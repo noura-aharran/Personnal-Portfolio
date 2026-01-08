@@ -1,18 +1,17 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { FiBookOpen, FiCode, FiDatabase, FiUserCheck } from 'react-icons/fi';
 
 const About = () => {
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
+    <section id="about" className="py-24 relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-indigo-100 rounded-full mix-blend-multiply opacity-20 animate-blob"></div>
-        <div className="absolute top-1/3 right-1/3 w-96 h-96 bg-pink-100 rounded-full mix-blend-multiply opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-10 -left-10 w-80 h-80 bg-indigo-100 rounded-full mix-blend-multiply opacity-20 animate-blob animation-delay-4000"></div>
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-screen opacity-30 animate-blob"></div>
+        <div className="absolute top-1/3 right-1/3 w-96 h-96 bg-pink-500/10 rounded-full mix-blend-screen opacity-30 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-10 -left-10 w-80 h-80 bg-purple-500/10 rounded-full mix-blend-screen opacity-30 animate-blob animation-delay-4000"></div>
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -22,148 +21,178 @@ const About = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-            <span className="text-black">About</span> <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#861088] to-[#660691]">Me</span>
+            <span className="text-white">Education & </span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Areas of Interest</span>
           </h2>
-          <div className="h-1.5 w-64 bg-gradient-to-r from-[#861088] to-[#660691] mx-auto rounded-full shadow-sm"></div>
-          <p className="text-indigo-900 max-w-2xl mx-auto text-lg font-medium mt-6">
-            Discovering the world through data and artificial intelligence
-          </p>
+          <div className="h-1.5 w-64 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full shadow-lg"></div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-1 gap-12 items-start">
+          {/* Education Card */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: 0 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="relative bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-xl border border-white/50 overflow-hidden group"
+            className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-white/10 overflow-hidden group"
           >
             {/* Card highlight effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-xl blur opacity-10 group-hover:opacity-20 transition duration-300"></div>
-            
-            <div className="relative">
-              <h3 className="text-2xl font-semibold mb-6 text-gray-800">My Journey</h3>
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                I'm Noura Aharran, a dedicated 4th year Big Data and AI Engineering student at ENSA Tetouan.
-                My academic journey has equipped me with a strong foundation in data analysis, machine learning,
-                and artificial intelligence.
-              </p>
-              <p className="text-gray-700 mb-8 leading-relaxed">
-                I'm passionate about solving complex problems through innovative data-driven solutions.
-                My goal is to leverage my technical skills and creativity to make meaningful contributions
-                to the fields of Big Data and AI.
-              </p>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur opacity-10 group-hover:opacity-20 transition duration-300"></div>
 
-              <div className="grid grid-cols-2 gap-6">
-                <motion.div 
-                  className="flex items-center group/item"
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <div className="p-3 rounded-lg bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-500 mr-4 group-hover/item:bg-indigo-500 group-hover/item:text-white transition-all duration-300 shadow-sm">
-                    <FiUserCheck size={22} />
-                  </div>
-                  <span className="text-gray-700 font-medium">Team Collaboration</span>
-                </motion.div>
-                <motion.div 
-                  className="flex items-center group/item"
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <div className="p-3 rounded-lg bg-gradient-to-br from-pink-50 to-pink-100 text-pink-500 mr-4 group-hover/item:bg-pink-500 group-hover/item:text-white transition-all duration-300 shadow-sm">
-                    <FiDatabase size={22} />
-                  </div>
-                  <span className="text-gray-700 font-medium">Artificial Intelligence</span>
-                </motion.div>
-                <motion.div 
-                  className="flex items-center group/item"
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <div className="p-3 rounded-lg bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-500 mr-4 group-hover/item:bg-indigo-500 group-hover/item:text-white transition-all duration-300 shadow-sm">
-                    <FiCode size={22} />
-                  </div>
-                  <span className="text-gray-700 font-medium">Problem Solving</span>
-                </motion.div>
-                <motion.div 
-                  className="flex items-center group/item"
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <div className="p-3 rounded-lg bg-gradient-to-br from-pink-50 to-pink-100 text-pink-500 mr-4 group-hover/item:bg-pink-500 group-hover/item:text-white transition-all duration-300 shadow-sm">
-                    <FiBookOpen size={22} />
-                  </div>
-                  <span className="text-gray-700 font-medium">Continuous Learning</span>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="relative bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-xl border border-white/50 overflow-hidden group"
-          >
-            {/* Card highlight effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 to-indigo-500 rounded-xl blur opacity-10 group-hover:opacity-20 transition duration-300"></div>
-            
             <div className="relative">
-              <h3 className="text-2xl font-semibold mb-6 text-gray-800">Education & Experience</h3>
-              
-              <div className="mb-8 pl-6 border-l-2 border-gradient-to-b from-indigo-400 to-purple-400 relative">
-                <div className="absolute w-5 h-5 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full -left-[11px] top-0 shadow-md shadow-indigo-500/20"></div>
-                <h4 className="text-xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-[#861088] to-[#660691]">ENSA Tetouan</h4>
-                <p className="text-gray-700">Big Data & AI Engineering</p>
-                <p className="text-gray-600 text-sm mt-1">2021 - Present (4th Year)</p>
+              {/* Education Section */}
+              <div className="mb-12">
+                <h3 className="text-3xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">Education</h3>
+
+                {/* Horizontal timeline */}
+                <div className="relative mb-6">
+                  <div className="absolute top-6 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-pink-300 to-pink-400 opacity-30 rounded-full z-0"></div>
+                </div>
+
+                <div className="flex space-x-8 overflow-x-auto py-4 pb-6 scrollbar-thin scrollbar-thumb-purple-400/50 scrollbar-track-transparent">
+                  {[
+                    {
+                      title: "Ingénieure d'État en Big Data et IA",
+                      school: "ENSA Tétouan",
+                      year: "2021 - 2026",
+                      color: "purple"
+                    },
+                    {
+                      title: "DEUST en Biologie, Chimie et Géologie (BCG)",
+                      school: "FST, Tanger",
+                      year: "2021",
+                      color: "pink"
+                    },
+                    {
+                      title: "Baccalauréat sciences physiques",
+                      school: "Candidat libre, Tétouan",
+                      year: "2021",
+                      color: "purple"
+                    },
+                    {
+                      title: "Baccalauréat sciences de la Vie et de la Terre",
+                      school: "Lycée Khadija Oum El Mouminin, Tétouan",
+                      year: "2019",
+                      color: "pink"
+                    },
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      whileHover={{ y: -8, scale: 1.05 }}
+                      className="flex-shrink-0 w-72 relative bg-white/10 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-white/20 hover:shadow-2xl transition-all duration-300 z-10 group/card"
+                    >
+                      {/* Point de la timeline */}
+                      <div className={`absolute -top-3 left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full shadow-lg z-20 ${
+                        item.color === 'purple' 
+                          ? 'bg-gradient-to-br from-purple-400 to-purple-600' 
+                          : 'bg-gradient-to-br from-pink-400 to-pink-600'
+                      }`}></div>
+
+                      {/* Glow effect on hover */}
+                      <div className={`absolute -inset-0.5 rounded-xl blur-sm opacity-0 group-hover/card:opacity-100 transition duration-300 ${
+                        item.color === 'purple'
+                          ? 'bg-gradient-to-r from-purple-500 to-purple-600'
+                          : 'bg-gradient-to-r from-pink-500 to-pink-600'
+                      }`}></div>
+
+                      <div className="relative">
+                        <h4 className={`text-lg font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r ${
+                          item.color === 'purple'
+                            ? 'from-purple-300 to-purple-500'
+                            : 'from-pink-300 to-pink-500'
+                        }`}>
+                          {item.title}
+                        </h4>
+                        <p className="text-gray-200 text-sm font-medium">{item.school}</p>
+                        <p className="text-gray-400 text-sm mt-2 flex items-center">
+                          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                          </svg>
+                          {item.year}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-              
-              <div className="mb-8 pl-6 border-l-2 border-gradient-to-b from-indigo-400 to-purple-400 relative">
-                <div className="absolute w-5 h-5 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full -left-[11px] top-0 shadow-md shadow-indigo-500/20"></div>
-                <h4 className="text-xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-[#861088] to-[#660691]">FST Tanger</h4>
-                <p className="text-gray-700">DEUST BCG</p>
-                <p className="text-gray-600 text-sm mt-1">2021</p>
-              </div>
-              
-              {/* You can add more education or experience items here */}
-              
-              <h3 className="text-2xl font-semibold mt-12 mb-6 text-gray-800">Areas of Interest</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <motion.div 
-                  className="px-5 py-4 bg-white rounded-lg shadow-sm border border-indigo-100/50 hover:shadow-md transition-all hover:border-indigo-300 group/card"
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <h4 className="text-indigo-600 font-medium mb-1 group-hover/card:text-indigo-700">Machine Learning</h4>
-                  <p className="text-gray-700 text-sm">Deep Learning, Neural Networks</p>
-                </motion.div>
-                <motion.div 
-                  className="px-5 py-4 bg-white rounded-lg shadow-sm border border-pink-100/50 hover:shadow-md transition-all hover:border-pink-300 group/card"
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <h4 className="text-pink-600 font-medium mb-1 group-hover/card:text-pink-700">Big Data Analytics</h4>
-                  <p className="text-gray-700 text-sm">Processing & Analysis Techniques</p>
-                </motion.div>
-                <motion.div 
-                  className="px-5 py-4 bg-white rounded-lg shadow-sm border border-indigo-100/50 hover:shadow-md transition-all hover:border-indigo-300 group/card"
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <h4 className="text-indigo-600 font-medium mb-1 group-hover/card:text-indigo-700">Natural Language Processing</h4>
-                  <p className="text-gray-700 text-sm">Text Analysis & Understanding</p>
-                </motion.div>
-                <motion.div 
-                  className="px-5 py-4 bg-white rounded-lg shadow-sm border border-pink-100/50 hover:shadow-md transition-all hover:border-pink-300 group/card"
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <h4 className="text-pink-600 font-medium mb-1 group-hover/card:text-pink-700">Data Visualization</h4>
-                  <p className="text-gray-700 text-sm">Interactive Analytics & Dashboards</p>
-                </motion.div>
+
+              {/* Areas of Interest */}
+              <div>
+                <h3 className="text-3xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">Areas of Interest</h3>
+                
+                {/* Horizontal timeline under Areas of Interest */}
+                <div className="relative mb-6">
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-pink-300 to-pink-400 opacity-30 rounded-full z-0"></div>
+                </div>
+             
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                  {[
+                    {
+                      title: "General & Applied Artificial Intelligence",
+                      description: "Applied AI for FootBall, Healthcare, and many other fields. Intelligent systems and multi-agent systems, Modeling and optimization of complex processes",
+                      color: "purple",
+                      icon: "🤖"
+                    },
+                    {
+                      title: "Machine Learning & LLM / NLP",
+                      description: "Deep Learning, Neural Networks, Natural Language Processing (NLP) and Large Language Models (LLMs), text generation, and automatic summarization",
+                      color: "pink",
+                      icon: "🧠"
+                    },
+                    {
+                      title: "Data Engineering",
+                      description: "ETL pipelines, SQL, PySpark, Python, data cleaning, preprocessing, integration, and workflow optimization for analytics",
+                      color: "purple",
+                      icon: "⚙️"
+                    },
+                    {
+                      title: "Computer Vision & Data Sciences",
+                      description: "Computer Vision: image recognition, object detection, Preparing data for Machine Learning and AI applications, and Interactive data visualization and dashboards",
+                      color: "pink",
+                      icon: "👁️"
+                    }
+                  ].map((item, index) => (
+                    <motion.div 
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      className={`relative px-6 py-5 bg-white/10 backdrop-blur-lg rounded-xl shadow-lg border transition-all group/card ${
+                        item.color === 'purple'
+                          ? 'border-purple-500/30 hover:border-purple-400'
+                          : 'border-pink-500/30 hover:border-pink-400'
+                      }`}
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      {/* Glow effect */}
+                      <div className={`absolute -inset-0.5 rounded-xl blur-sm opacity-0 group-hover/card:opacity-100 transition duration-300 ${
+                        item.color === 'purple'
+                          ? 'bg-gradient-to-r from-purple-500 to-purple-600'
+                          : 'bg-gradient-to-r from-pink-500 to-pink-600'
+                      }`}></div>
+
+                      <div className="relative">
+                        <div className="flex items-start gap-3 mb-2">
+                          <span className="text-2xl">{item.icon}</span>
+                          <h4 className={`text-lg font-semibold ${
+                            item.color === 'purple'
+                              ? 'text-purple-300 group-hover/card:text-purple-200'
+                              : 'text-pink-300 group-hover/card:text-pink-200'
+                          }`}>
+                            {item.title}
+                          </h4>
+                        </div>
+                        <p className="text-gray-300 text-sm leading-relaxed">{item.description}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
@@ -173,4 +202,4 @@ const About = () => {
   );
 };
 
-export default About; 
+export default About;

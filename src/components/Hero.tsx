@@ -45,8 +45,16 @@ const Hero = () => {
     <section 
       id="home" 
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center py-20"
+      className="relative min-h-screen flex items-center justify-center py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden"
     >
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-screen opacity-30 animate-blob"></div>
+        <div className="absolute top-40 right-20 w-96 h-96 bg-pink-500/10 rounded-full mix-blend-screen opacity-30 animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-purple-500/10 rounded-full mix-blend-screen opacity-30 animate-blob animation-delay-4000"></div>
+        <div className="absolute bottom-40 left-40 w-80 h-80 bg-pink-500/10 rounded-full mix-blend-screen opacity-30 animate-blob animation-delay-1000"></div>
+      </div>
+
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -63,21 +71,21 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="inline-block mb-4 px-4 py-1.5 bg-white bg-opacity-50 backdrop-blur-sm text-indigo-600 rounded-full text-sm font-medium border border-indigo-100/30 shadow-sm"
+              className="inline-block mb-4 px-4 py-1.5 bg-white/10 backdrop-blur-sm text-purple-300 rounded-full text-sm font-medium border border-white/20 shadow-sm"
             >
-              Big Data & AI Engineering Student
+              AI Future Engineer
             </motion.div>
             
             {/* Main headings */}
             <div className="space-y-4">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
                 <motion.span 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
                   className="block mb-1"
                 >
-                  Hi, I'm
+                  Hi, I am
                 </motion.span>
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
@@ -85,14 +93,14 @@ const Hero = () => {
                   transition={{ duration: 0.5, delay: 0.5 }}
                   className="relative inline-block"
                 >
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#861088] via-[#7a0990] to-[#660691] relative z-10">
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600 relative z-10">
                     Noura Aharran
                   </span>
                   <motion.div 
                     initial={{ width: "0%" }}
                     animate={{ width: "100%" }}
                     transition={{ duration: 1, delay: 0.9, ease: "easeOut" }}
-                    className="absolute -bottom-2 left-0 h-3 bg-gradient-to-r from-[#861088]/60 to-[#660691]/60 w-full -z-10 rounded-sm"
+                    className="absolute -bottom-2 left-0 h-3 bg-gradient-to-r from-purple-500/60 to-pink-500/60 w-full -z-10 rounded-sm"
                   ></motion.div>
                 </motion.div>
               </h1>
@@ -102,11 +110,11 @@ const Hero = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.7 }}
-                className="text-gray-600 text-lg max-w-xl mx-auto md:mx-0 leading-relaxed"
+                className="text-gray-300 text-lg max-w-xl mx-auto md:mx-0 leading-relaxed"
               >
-                Passionate about leveraging data and AI to solve complex problems.
-                I transform raw data into meaningful insights that drive innovation and create 
-                impactful solutions for real-world challenges across various domains.
+                I am an aspiring AI Future Engineer with a strong passion for advancing artificial intelligence technologies and applying them to real-world problems. My interests span applied AI, generative AI, large language models (LLMs), computer vision, and intelligent multi-agent systems.
+
+I am committed to building scalable and innovative AI solutions that can enhance decision-making, automate processes, and generate new insights. I continuously explore emerging AI methodologies and tools to stay at the forefront of the field, while integrating data engineering, machine learning, and AI engineering principles into practical projects.
               </motion.p>
             </div>
             
@@ -122,8 +130,8 @@ const Hero = () => {
                 href="#contact" 
                 className="group relative overflow-hidden rounded-full bg-white/10 p-[1px] shadow-lg"
               >
-                <div className="absolute inset-[-2px] bg-gradient-to-r from-[#861088] to-[#660691] rounded-full opacity-70 group-hover:opacity-100 blur-sm transition duration-500 group-hover:blur-md"></div>
-                <div className="relative flex items-center justify-center bg-white backdrop-blur-sm hover:bg-gradient-to-r hover:from-[#861088] hover:to-[#660691] px-8 py-3.5 rounded-full transition-all duration-300 group-hover:text-white">
+                <div className="absolute inset-[-2px] bg-gradient-to-r from-purple-500 to-pink-500 rounded-full opacity-70 group-hover:opacity-100 blur-sm transition duration-500 group-hover:blur-md"></div>
+                <div className="relative flex items-center justify-center bg-purple-500/20 backdrop-blur-sm hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 px-8 py-3.5 rounded-full transition-all duration-300 text-white">
                   <span className="relative z-10 flex items-center font-medium">
                     Get in Touch
                     <motion.svg 
@@ -147,8 +155,8 @@ const Hero = () => {
                 href="#projects" 
                 className="group relative overflow-hidden rounded-full"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/40 to-pink-500/40 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 blur-sm"></div>
-                <div className="relative flex items-center justify-center text-gray-800 rounded-full transition-all duration-300 bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-sm hover:shadow-lg px-8 py-3.5 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/40 to-pink-500/40 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 blur-sm"></div>
+                <div className="relative flex items-center justify-center text-white rounded-full transition-all duration-300 bg-white/10 backdrop-blur-sm border border-white/20 shadow-sm hover:shadow-lg px-8 py-3.5 overflow-hidden">
                   <span className="relative z-10 flex items-center font-medium">
                     <span className="mr-1">View Projects</span>
                     <svg className="w-4 h-4 ml-1 transition-transform duration-300 transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -167,14 +175,14 @@ const Hero = () => {
               className="mt-12 flex gap-5 justify-center md:justify-start"
             >
               <motion.a 
-                href="https://linkedin.com" 
+                href="linkedin.com/in/noura-aharran-910b3827b" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 whileHover={{ y: -5, scale: 1.1 }}
                 className="group relative p-0.5 rounded-full"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 blur-[1px]"></div>
-                <div className="relative p-3 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200/60 text-gray-600 group-hover:text-white group-hover:border-indigo-200 group-hover:bg-indigo-500 transition-all duration-300 shadow-sm group-hover:shadow-indigo-500/20 group-hover:shadow-lg"
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 blur-[1px]"></div>
+                <div className="relative p-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-gray-300 group-hover:text-white group-hover:border-purple-300 group-hover:bg-purple-500 transition-all duration-300 shadow-sm group-hover:shadow-purple-500/20 group-hover:shadow-lg"
                   aria-label="LinkedIn"
                 >
                   <FiLinkedin size={20} />
@@ -182,14 +190,14 @@ const Hero = () => {
               </motion.a>
               
               <motion.a 
-                href="https://github.com" 
+                href="https://github.com/noura-aharran" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 whileHover={{ y: -5, scale: 1.1 }}
                 className="group relative p-0.5 rounded-full"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 blur-[1px]"></div>
-                <div className="relative p-3 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200/60 text-gray-600 group-hover:text-white group-hover:border-indigo-200 group-hover:bg-indigo-500 transition-all duration-300 shadow-sm group-hover:shadow-indigo-500/20 group-hover:shadow-lg"
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 blur-[1px]"></div>
+                <div className="relative p-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-gray-300 group-hover:text-white group-hover:border-purple-300 group-hover:bg-purple-500 transition-all duration-300 shadow-sm group-hover:shadow-purple-500/20 group-hover:shadow-lg"
                   aria-label="GitHub"
                 >
                   <FiGithub size={20} />
@@ -197,12 +205,12 @@ const Hero = () => {
               </motion.a>
               
               <motion.a 
-                href="mailto:contact@example.com" 
+                href="mailto:aharrannoura9@gmail.com" 
                 whileHover={{ y: -5, scale: 1.1 }}
                 className="group relative p-0.5 rounded-full"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-pink-600 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 blur-[1px]"></div>
-                <div className="relative p-3 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200/60 text-gray-600 group-hover:text-white group-hover:border-pink-200 group-hover:bg-pink-500 transition-all duration-300 shadow-sm group-hover:shadow-pink-500/20 group-hover:shadow-lg"
+                <div className="relative p-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-gray-300 group-hover:text-white group-hover:border-pink-300 group-hover:bg-pink-500 transition-all duration-300 shadow-sm group-hover:shadow-pink-500/20 group-hover:shadow-lg"
                   aria-label="Email"
                 >
                   <FiMail size={20} />
@@ -224,12 +232,12 @@ const Hero = () => {
               transition={{ duration: 0.3 }}
             >
               {/* Glowing orb background */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500/5 via-purple-500/5 to-pink-500/5 blur-2xl"></div>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-purple-500/10 blur-2xl"></div>
               
               {/* Card with glass effect and 3D perspective tilt */}
               <motion.div 
                 ref={cardRef}
-                className="relative w-full h-full rounded-2xl bg-white/20 backdrop-filter backdrop-blur-lg border border-white/30 shadow-xl overflow-hidden"
+                className="relative w-full h-full rounded-2xl bg-white/10 backdrop-filter backdrop-blur-lg border border-white/20 shadow-2xl overflow-hidden"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 animate={{
@@ -246,19 +254,19 @@ const Hero = () => {
                     scale: [1, 1.02, 1, 0.98, 1]
                   }}
                   transition={{ duration: 15, repeat: Infinity }}
-                  className="absolute inset-4 rounded-xl bg-gradient-to-br from-white/60 to-white/20 backdrop-blur-md flex items-center justify-center"
+                  className="absolute inset-4 rounded-xl bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-md flex items-center justify-center"
                 >
                   {/* Orbit ring */}
-                  <div className="absolute w-[90%] h-[90%] rounded-full border border-indigo-200/40 animate-spin-very-slow">
-                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-indigo-400 rounded-full shadow-lg shadow-indigo-400/30"></div>
+                  <div className="absolute w-[90%] h-[90%] rounded-full border border-purple-300/40 animate-spin-very-slow">
+                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-purple-400 rounded-full shadow-lg shadow-purple-400/30"></div>
                   </div>
                   
                   {/* Profile circle with enhanced interactivity */}
                   <motion.div 
-                    className="relative w-[65%] h-[65%] bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/40 shadow-lg overflow-hidden group"
+                    className="relative w-[65%] h-[65%] bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-lg overflow-hidden group"
                     whileHover={{ 
                       scale: 1.05,
-                      boxShadow: "0 10px 25px -5px rgba(99, 102, 241, 0.4)"
+                      boxShadow: "0 10px 25px -5px rgba(168, 85, 247, 0.4)"
                     }}
                     transition={{ 
                       type: "spring", 
@@ -268,14 +276,14 @@ const Hero = () => {
                   >
                     {/* Interactive glow effects on hover */}
                     <motion.div 
-                      className="absolute inset-0 bg-gradient-to-r from-[#861088]/0 via-[#7a0990]/0 to-[#660691]/0 opacity-0 group-hover:opacity-100 group-hover:from-[#861088]/30 group-hover:via-[#7a0990]/30 group-hover:to-[#660691]/30 transition-all duration-700 blur-xl"
+                      className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-pink-500/0 to-purple-500/0 opacity-0 group-hover:opacity-100 group-hover:from-purple-500/30 group-hover:via-pink-500/30 group-hover:to-purple-500/30 transition-all duration-700 blur-xl"
                       animate={{ rotate: [0, 360] }}
                       transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                     ></motion.div>
                     
                     {/* Rotating gradient border with pulse effect */}
                     <motion.div 
-                      className="absolute -inset-1 bg-gradient-to-r from-[#861088] via-[#7a0990] to-[#660691] rounded-full blur-md opacity-70 group-hover:opacity-100 animate-spin-very-slow"
+                      className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 rounded-full blur-md opacity-70 group-hover:opacity-100 animate-spin-very-slow"
                       animate={{ 
                         scale: [1, 1.05, 1],
                         opacity: [0.7, 0.9, 0.7]
@@ -288,12 +296,12 @@ const Hero = () => {
                     ></motion.div>
                     
                     {/* White inner container */}
-                    <div className="absolute inset-[3px] bg-white rounded-full flex items-center justify-center z-10">
+                    <div className="absolute inset-[3px] bg-slate-900 rounded-full flex items-center justify-center z-10">
                       {/* Animated background pattern */}
                       <div className="absolute inset-0 opacity-30">
-                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-white"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 to-slate-900"></div>
                         <div className="absolute inset-0" style={{ 
-                          backgroundImage: `radial-gradient(circle at 20% 40%, rgba(99, 102, 241, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 60%, rgba(236, 72, 153, 0.15) 0%, transparent 50%)`,
+                          backgroundImage: `radial-gradient(circle at 20% 40%, rgba(168, 85, 247, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 60%, rgba(236, 72, 153, 0.15) 0%, transparent 50%)`,
                           backgroundSize: '100% 100%'
                         }}></div>
                       </div>
@@ -327,12 +335,12 @@ const Hero = () => {
                         }}
                       >
                         {/* Dynamic gradient background */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900"></div>
                         
                         {/* Animated mesh grid pattern */}
                         <div className="absolute inset-0 opacity-10"
                           style={{
-                            backgroundImage: `linear-gradient(to right, rgba(99, 102, 241, 0.3) 1px, transparent 1px), linear-gradient(to bottom, rgba(99, 102, 241, 0.3) 1px, transparent 1px)`,
+                            backgroundImage: `linear-gradient(to right, rgba(168, 85, 247, 0.3) 1px, transparent 1px), linear-gradient(to bottom, rgba(168, 85, 247, 0.3) 1px, transparent 1px)`,
                             backgroundSize: '10px 10px'
                           }}
                         ></div>
@@ -341,7 +349,7 @@ const Hero = () => {
                         {Array.from({ length: 6 }).map((_, i) => (
                           <motion.div
                             key={`particle-${i}`}
-                            className="absolute w-1 h-1 rounded-full bg-indigo-400/50"
+                            className="absolute w-1 h-1 rounded-full bg-purple-400/50"
                             initial={{ 
                               x: Math.random() * 100 - 50, 
                               y: Math.random() * 100 - 50,
@@ -369,13 +377,13 @@ const Hero = () => {
                         >
                           <div className="w-full h-full relative">
                             {/* Fallback placeholder shown by default */}
-                            <div className="absolute inset-0 rounded-full flex items-center justify-center bg-gradient-to-br from-[#861088]/80 to-[#660691]/80">
+                            <div className="absolute inset-0 rounded-full flex items-center justify-center bg-gradient-to-br from-purple-500/80 to-pink-500/80">
                               <span className="text-white font-medium text-xl">NA</span>
                             </div>
                             
                             {/* Try multiple image paths to find the correct one */}
                             <Image
-                              src="/images/tech/noura.jpg"
+                              src="/images/tech/me.jpeg"
                               alt="Noura Aharran"
                               fill
                               sizes="(max-width: 768px) 100vw, 300px"
@@ -402,7 +410,7 @@ const Hero = () => {
                         repeatType: "loop",
                         repeatDelay: 0.5
                       }}
-                      className="absolute left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-indigo-400/70 to-transparent z-20"
+                      className="absolute left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-purple-400/70 to-transparent z-20"
                     ></motion.div>
                     
                     <motion.div
@@ -423,16 +431,16 @@ const Hero = () => {
                   <motion.div 
                     animate={{ rotate: 360 }}
                     transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                    className="absolute w-[115%] h-[115%] rounded-full border border-indigo-200/20"
+                    className="absolute w-[115%] h-[115%] rounded-full border border-purple-300/20"
                   >
-                    <div className="absolute -top-1 -left-1 w-2 h-2 bg-indigo-400 rounded-full shadow-lg shadow-indigo-400/50"></div>
+                    <div className="absolute -top-1 -left-1 w-2 h-2 bg-purple-400 rounded-full shadow-lg shadow-purple-400/50"></div>
                     <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-pink-400 rounded-full shadow-lg shadow-pink-400/50"></div>
                   </motion.div>
                   
                   <motion.div 
                     animate={{ rotate: -360 }}
                     transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-                    className="absolute w-[105%] h-[105%] rounded-full border border-pink-200/20"
+                    className="absolute w-[105%] h-[105%] rounded-full border border-pink-300/20"
                   >
                     <div className="absolute top-1/2 -right-1 w-1.5 h-1.5 bg-pink-400 rounded-full shadow-lg shadow-pink-400/50"></div>
                   </motion.div>
@@ -450,11 +458,11 @@ const Hero = () => {
         transition={{ duration: 0.5, delay: 1.5 }}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer z-10"
       >
-        <Link href="#about">
+        <Link href="#education">
           <motion.div 
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.95 }}
-            className="p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-lg text-indigo-500 hover:text-pink-500 transition-colors border border-white/30 group"
+            className="p-3 rounded-full bg-white/10 backdrop-blur-sm shadow-lg text-purple-400 hover:text-pink-400 transition-colors border border-white/20 group"
           >
             <motion.div
               animate={{ y: [0, 5, 0] }}
@@ -469,4 +477,4 @@ const Hero = () => {
   );
 };
 
-export default Hero; 
+export default Hero;

@@ -1,6 +1,6 @@
 # Noura Aharran Portfolio
 
-A modern, responsive portfolio website built with Next.js and Tailwind CSS for Noura Aharran, a Big Data and AI Engineering student at ENSA Tetouan.
+A modern, responsive portfolio website built by Abdellah Raissouni as a code source with Next.js and Tailwind CSS for Noura Aharran, a Big Data and AI Engineering student at ENSA Tetouan.
 
 ## Features
 

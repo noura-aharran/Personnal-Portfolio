@@ -68,10 +68,12 @@ const BackgroundController = () => {
   const particles = Array.from({ length: 40 }).map((_, i) => {
     const seed = i * 1000;
     return {
-      top: `${seededRandom(seed) * 100}%`,
-      left: `${seededRandom(seed + 1) * 100}%`,
-      opacity: 0.1 + seededRandom(seed + 2) * 0.3,
-      scale: 0.5 + seededRandom(seed + 3) * 0.5,
+      top: seededRandom(seed) * 100,
+      left: seededRandom(seed + 1) * 100,
+      baseOpacity: 0.1 + seededRandom(seed + 2) * 0.3,
+      baseScale: 0.5 + seededRandom(seed + 3) * 0.5,
+      scrollFactorX: seededRandom(i * 1000 + 4) * 0.1 - 0.05,
+      scrollFactorY: seededRandom(i * 1000 + 5) * 0.05 - 0.025,
       color: i % 6 === 0 ? 'bg-indigo-400/30' : 
              i % 6 === 1 ? 'bg-pink-400/30' : 
              i % 6 === 2 ? 'bg-purple-400/30' :
@@ -81,6 +83,21 @@ const BackgroundController = () => {
     };
   });
 
+  // Don't render particles until client-side to avoid hydration mismatch
+  if (!isClient) {
+    return (
+      <div className="fixed inset-0 -z-5 overflow-hidden pointer-events-none">
+        {/* Render static backgrounds only on server */}
+        <motion.div 
+          style={{ opacity: opacity1, scale: scale1 }}
+          className="absolute inset-0"
+        >
+          <div className="absolute top-1/3 right-1/4 w-[45rem] h-[45rem] bg-indigo-300/20 rounded-full mix-blend-normal filter blur-[140px]"></div>
+        </motion.div>
+      </div>
+    );
+  }
+
   return (
     <div className="fixed inset-0 -z-5 overflow-hidden pointer-events-none">
       {/* Enhanced animated spotlight that follows scroll */}
@@ -88,7 +105,7 @@ const BackgroundController = () => {
         className="absolute opacity-30 w-[1000px] h-[1000px] rounded-full pointer-events-none transition-transform duration-1000 ease-out"
         style={{
           background: 'radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%)',
-          transform: isClient ? `translate(${scrollY * 0.05}px, ${Math.min(scrollY * 0.02, 30)}px)` : 'translate(0px, 0px)',
+          transform: `translate(${scrollY * 0.05}px, ${Math.min(scrollY * 0.02, 30)}px)`,
         }}
       />
       
@@ -188,52 +205,55 @@ const BackgroundController = () => {
         ></motion.div>
       </motion.div>
       
-      {/* Enhanced animated particles with better distribution and aesthetics */}
+      {/* Enhanced animated particles - only render on client */}
       <div className="absolute inset-0 pointer-events-none">
-        {particles.map((particle, i) => (
-          <motion.div
-            key={`particle-${i}`}
-            className={`absolute w-${particle.size} h-${particle.size} rounded-full ${particle.color}`}
-            style={{
-              top: particle.top,
-              left: particle.left,
-              x: isClient ? `${scrollY * (seededRandom(i * 1000 + 4) * 0.1 - 0.05)}px` : '0px',
-              y: isClient ? `${scrollY * (seededRandom(i * 1000 + 5) * 0.05 - 0.025)}px` : '0px',
-              opacity: isClient ? particle.opacity + Math.sin(scrollY * 0.01 + i) * 0.3 : particle.opacity,
-              scale: isClient ? particle.scale + Math.sin(scrollY * 0.005 + i) * 0.5 : particle.scale,
-              filter: 'blur(0.5px)'
-            }}
-          />
-        ))}
+        {particles.map((particle, i) => {
+          const currentOpacity = particle.baseOpacity + Math.sin(scrollY * 0.01 + i) * 0.3;
+          const currentScale = particle.baseScale + Math.sin(scrollY * 0.005 + i) * 0.5;
+          
+          return (
+            <motion.div
+              key={`particle-${i}`}
+              className={`absolute w-${particle.size} h-${particle.size} rounded-full ${particle.color}`}
+              style={{
+                top: `${particle.top}%`,
+                left: `${particle.left}%`,
+                transform: `translate(${scrollY * particle.scrollFactorX}px, ${scrollY * particle.scrollFactorY}px) scale(${currentScale})`,
+                opacity: currentOpacity,
+                filter: 'blur(0.5px)'
+              }}
+            />
+          );
+        })}
       </div>
       
       {/* Decorative grid lines that respond to scroll */}
       <div className="absolute inset-0 pointer-events-none opacity-5">
         <motion.div 
           style={{ 
-            y: isClient ? scrollY * 0.03 : 0,
-            opacity: isClient ? 0.3 + Math.sin(scrollY * 0.001) * 0.1 : 0.3
+            transform: `translateY(${scrollY * 0.03}px)`,
+            opacity: 0.3 + Math.sin(scrollY * 0.001) * 0.1
           }}
           className="absolute top-[15%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-indigo-400 to-transparent"
         ></motion.div>
         <motion.div 
           style={{ 
-            y: isClient ? scrollY * -0.02 : 0,
-            opacity: isClient ? 0.3 + Math.sin(scrollY * 0.001 + 2) * 0.1 : 0.3
+            transform: `translateY(${scrollY * -0.02}px)`,
+            opacity: 0.3 + Math.sin(scrollY * 0.001 + 2) * 0.1
           }}
           className="absolute top-[35%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-pink-400 to-transparent"
         ></motion.div>
         <motion.div 
           style={{ 
-            y: isClient ? scrollY * 0.04 : 0,
-            opacity: isClient ? 0.3 + Math.sin(scrollY * 0.001 + 4) * 0.1 : 0.3
+            transform: `translateY(${scrollY * 0.04}px)`,
+            opacity: 0.3 + Math.sin(scrollY * 0.001 + 4) * 0.1
           }}
           className="absolute top-[65%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-indigo-400 to-transparent"
         ></motion.div>
         <motion.div 
           style={{ 
-            y: isClient ? scrollY * -0.03 : 0,
-            opacity: isClient ? 0.3 + Math.sin(scrollY * 0.001 + 6) * 0.1 : 0.3
+            transform: `translateY(${scrollY * -0.03}px)`,
+            opacity: 0.3 + Math.sin(scrollY * 0.001 + 6) * 0.1
           }}
           className="absolute top-[85%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-pink-400 to-transparent"
         ></motion.div>
@@ -242,4 +262,4 @@ const BackgroundController = () => {
   );
 };
 
-export default BackgroundController; 
+export default BackgroundController;

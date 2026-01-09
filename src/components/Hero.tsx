@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { FiArrowDown, FiLinkedin, FiGithub, FiMail } from 'react-icons/fi';
-import Link from 'next/link';
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 
@@ -10,6 +9,12 @@ const Hero = () => {
   const containerRef = useRef(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const [tiltRotation, setTiltRotation] = useState({ x: 0, y: 0 });
+  const [isClient, setIsClient] = useState(false);
+
+  // Set client-side flag
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // 3D tilt effect based on mouse position
   useEffect(() => {
@@ -126,7 +131,7 @@ I am committed to building scalable and innovative AI solutions that can enhance
               className="mt-8 flex flex-col sm:flex-row gap-5 justify-center md:justify-start"
             >
               {/* Primary button - Get in Touch */}
-              <Link 
+              <a 
                 href="#contact" 
                 className="group relative overflow-hidden rounded-full bg-white/10 p-[1px] shadow-lg"
               >
@@ -148,10 +153,10 @@ I am committed to building scalable and innovative AI solutions that can enhance
                     </motion.svg>
                   </span>
                 </div>
-              </Link>
+              </a>
               
               {/* Secondary button - View Projects */}
-              <Link 
+              <a 
                 href="#projects" 
                 className="group relative overflow-hidden rounded-full"
               >
@@ -164,7 +169,7 @@ I am committed to building scalable and innovative AI solutions that can enhance
                     </svg>
                   </span>
                 </div>
-              </Link>
+              </a>
             </motion.div>
 
             {/* Social Links */}
@@ -175,7 +180,7 @@ I am committed to building scalable and innovative AI solutions that can enhance
               className="mt-12 flex gap-5 justify-center md:justify-start"
             >
               <motion.a 
-                href="linkedin.com/in/noura-aharran-910b3827b" 
+                href="https://linkedin.com/in/noura-aharran-910b3827b" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 whileHover={{ y: -5, scale: 1.1 }}
@@ -309,6 +314,8 @@ I am committed to building scalable and innovative AI solutions that can enhance
                       {/* Profile image placeholder with enhanced styling */}
                       <div className="relative w-full h-full rounded-full flex items-center justify-center overflow-hidden z-20 cursor-pointer" 
                         onClick={(e) => {
+                          if (!isClient) return;
+                          
                           // Create ripple effect on click
                           const circle = document.createElement('div');
                           const diameter = Math.max(e.currentTarget.clientWidth, e.currentTarget.clientHeight);
@@ -345,28 +352,44 @@ I am committed to building scalable and innovative AI solutions that can enhance
                           }}
                         ></div>
                         
-                        {/* Animated particles */}
-                        {Array.from({ length: 6 }).map((_, i) => (
-                          <motion.div
-                            key={`particle-${i}`}
-                            className="absolute w-1 h-1 rounded-full bg-purple-400/50"
-                            initial={{ 
-                              x: Math.random() * 100 - 50, 
-                              y: Math.random() * 100 - 50,
-                              opacity: 0 
-                            }}
-                            animate={{ 
-                              x: Math.random() * 100 - 50, 
-                              y: Math.random() * 100 - 50,
-                              opacity: [0, 1, 0]
-                            }}
-                            transition={{ 
-                              duration: 3 + Math.random() * 3,
-                              repeat: Infinity,
-                              delay: Math.random() * 2
-                            }}
-                          />
-                        ))}
+                        {/* Animated particles - only render on client */}
+                        {isClient && Array.from({ length: 6 }).map((_, i) => {
+                          // Use seeded random for consistent positions
+                          const seed = i * 1234;
+                          const seededRandom = (s: number) => {
+                            const x = Math.sin(s) * 10000;
+                            return x - Math.floor(x);
+                          };
+                          
+                          const initialX = seededRandom(seed) * 100 - 50;
+                          const initialY = seededRandom(seed + 1) * 100 - 50;
+                          const animateX = seededRandom(seed + 2) * 100 - 50;
+                          const animateY = seededRandom(seed + 3) * 100 - 50;
+                          const duration = 3 + seededRandom(seed + 4) * 3;
+                          const delay = seededRandom(seed + 5) * 2;
+                          
+                          return (
+                            <motion.div
+                              key={`particle-${i}`}
+                              className="absolute w-1 h-1 rounded-full bg-purple-400/50"
+                              initial={{ 
+                                x: initialX, 
+                                y: initialY,
+                                opacity: 0 
+                              }}
+                              animate={{ 
+                                x: animateX, 
+                                y: animateY,
+                                opacity: [0, 1, 0]
+                              }}
+                              transition={{ 
+                                duration: duration,
+                                repeat: Infinity,
+                                delay: delay
+                              }}
+                            />
+                          );
+                        })}
                         
                         {/* Profile image */}
                         <motion.div
@@ -458,7 +481,7 @@ I am committed to building scalable and innovative AI solutions that can enhance
         transition={{ duration: 0.5, delay: 1.5 }}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer z-10"
       >
-        <Link href="#education">
+        <a href="#education">
           <motion.div 
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.95 }}
@@ -471,7 +494,7 @@ I am committed to building scalable and innovative AI solutions that can enhance
               <FiArrowDown size={20} className="group-hover:stroke-[2.5px]" />
             </motion.div>
           </motion.div>
-        </Link>
+        </a>
       </motion.div>
     </section>
   );

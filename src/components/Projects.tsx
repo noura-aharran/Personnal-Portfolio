@@ -2,17 +2,15 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  FiExternalLink,
   FiGithub,
   FiDatabase,
   FiCode,
   FiBarChart2,
   FiLayers,
 } from "react-icons/fi";
-import Image from "next/image";
 
 const Projects = () => {
-  const [activeProject, setActiveProject] = useState(null);
+  const [activeProject, setActiveProject] = useState<number | null>(null);
 
   // Keyboard navigation
   useEffect(() => {
@@ -44,8 +42,7 @@ const Projects = () => {
       technologies: ["Python", "Transformers", "OpenCV", "ByteTrack", "YOLOv8"],
       imageUrl: "/images/project1.jpg",
       videoUrl: "/videos/project1-demo.mp4",
-      demoLink: "#",
-      githubLink: "#",
+      githubLink: "https://github.com/noura-aharran/Real_time_behavior_analysis",
       color: "indigo",
       icon: FiCode,
     },
@@ -60,7 +57,6 @@ const Projects = () => {
         { type: "image", url: "/images/nego/img2.png" },
         { type: "image", url: "/images/nego/img3.png" },
       ],
-      demoLink: "#",
       githubLink: "#",
       color: "pink",
       icon: FiDatabase,
@@ -78,13 +74,12 @@ const Projects = () => {
         "Explainable AI",
       ],
       media: [{ type: "video", url: "/images/fakenews/media.mp4" }],
-      demoLink: "#",
-      githubLink: "#",
+      githubLink: "https://github.com/noura-aharran/Fake_news_detection_with_explainability",
       color: "pink",
       icon: FiBarChart2,
     },
     {
-      title: "ETL & Multi-Source Data Modeling (Modeling — European Player Performance)",
+      title: "Modeling — European Player Performance",
       description:
         "Extract, transform, and analyze data to build predictive models and interactive dashboards showing European Football Player Performances during the whole season in the 5 big competitions.",
       technologies: [
@@ -98,8 +93,7 @@ const Projects = () => {
         { type: "image", url: "/images/football/foot0.png" },
         { type: "image", url: "/images/football/foot1.png" },
       ],
-      demoLink: "#",
-      githubLink: "#",
+      githubLink: "https://github.com/noura-aharran/Analyse-des-performances-des-joueurs-de-football-europ-ens",
       color: "indigo",
       icon: FiLayers,
     },
@@ -114,8 +108,7 @@ const Projects = () => {
         { type: "image", url: "/images/job/im2.png" },
         { type: "image", url: "/images/job/img3.png" },
       ],
-      demoLink: "#",
-      githubLink: "#",
+      githubLink: "https://github.com/noura-aharran/Dashboard_job_research",
       color: "indigo",
       icon: FiBarChart2,
     },
@@ -130,18 +123,16 @@ const Projects = () => {
         "OpenCV",
         "Mediapipe",
       ],
-      demoLink: "#",
-      githubLink: "#",
+      githubLink: "https://github.com/noura-aharran/Sign_Language_Detection",
       color: "pink",
       icon: FiCode,
     },
     {
       title: "Deep Learning for Cancer Detection",
       description:
-        "Implementation of a deep learning pipeline for the automated detection of cancer from radiology images. The project leverages image preprocessing, feature extraction, and Convolutional Neural Networks (CNN) combined with LSTM layers for temporal or sequence-based analysis. This approach enhances the classification accuracy for detecting cancerous regions, potentially assisting medical professionals in early diagnosis and improving patient outcomes.",
+        "Implementation of a deep learning pipeline for the automated detection of cancer from radiology images. The project leverages image preprocessing, feature extraction, and Convolutional Neural Networks (CNN) combined with LSTM layers for temporal or sequence-based analysis. This approach enhances the classification accuracy for detecting cancerous regions, potentially assisting medical professionals in early diagnosis and improving patient outcomes. This project was build in an academic area where we build an Interface for many other fonctionnalities",
       technologies: ["Deep Learning", "Python", "Image Processing", "CNN", "LSTM"],
-      demoLink: "#",
-      githubLink: "#",
+      githubLink: "https://github.com/salma-akhrif/MachineLearningProject",
       color: "pink",
       icon: FiDatabase,
     },
@@ -166,15 +157,14 @@ const Projects = () => {
         { type: "image", url: "/images/blockchain/image3.jpeg" },
         { type: "image", url: "/images/blockchain/image4.jpeg" },
       ],
-      demoLink: "#",
-      githubLink: "#",
+      githubLink: "https://github.com/noura-aharran/blockchain-project",
       color: "pink",
       icon: FiLayers,
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-20 px-4">
+    <section id="projects" className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -270,21 +260,13 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {/* Action Buttons */}
+                  {/* Action Button - GitHub only */}
                   <div className="flex gap-4 mt-8">
-                    <motion.a
-                      href={projects[activeProject].demoLink}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-shadow"
-                    >
-                      <FiExternalLink /> Live Demo
-                    </motion.a>
                     <motion.a
                       href={projects[activeProject].githubLink}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-6 py-3 bg-white/10 text-white rounded-xl font-semibold border border-white/20 hover:bg-white/20 transition-colors"
+                      className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-shadow"
                     >
                       <FiGithub /> View Code
                     </motion.a>
@@ -308,7 +290,7 @@ const Projects = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

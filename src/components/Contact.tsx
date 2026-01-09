@@ -84,7 +84,7 @@ const Contact = () => {
                 <FiPhone className="text-purple-300" size={24} />
               </div>
               <h3 className="text-xl font-bold text-white mb-2">Phone</h3>
-              <a href="tel:+2126 641-037101" className="text-purple-300 hover:text-purple-200 transition-colors">
+              <a href="tel:+212 641-037101" className="text-purple-300 hover:text-purple-200 transition-colors">
                 +212 641-037101
               </a>
             </motion.div>

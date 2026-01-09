@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { FiAward, FiExternalLink } from 'react-icons/fi';
+import { FiAward } from 'react-icons/fi';
 import Image from 'next/image';
 
 const Certifications = () => {
@@ -48,7 +48,7 @@ const Certifications = () => {
       date: "April 2025",
       description: "Introduction to PySpark",
       badgeColor: "pink",
-      image: "/images/certificats/cer1.jpeg"
+      image: "/images/certificats/cer2.jpeg"
     },
     {
       title: "Understanding Microsoft Azure Architecture and Services",
@@ -56,7 +56,7 @@ const Certifications = () => {
       date: "Mars 2025",
       description: "Understanding Microsoft Azure Architecture and Services",
       badgeColor: "pink",
-      image: "/images/certificats/cer2.jpeg"
+      image: "/images/certificats/cer1.jpeg"
     }
   ];
 
@@ -168,26 +168,7 @@ const Certifications = () => {
                   </a>
                 </div>
                 
-                <p className="text-gray-300 mb-5">{cert.description}</p>
-                
-                <a 
-                  href={cert.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className={`inline-flex items-center font-medium transition-colors duration-300 ${
-                    cert.badgeColor === 'indigo' ? 'text-purple-400 hover:text-purple-300' : 'text-pink-400 hover:text-pink-300'
-                  }`}
-                >
-                  View Certificate
-                  <motion.span 
-                    className="ml-2"
-                    initial={{ x: 0 }}
-                    whileHover={{ x: 3 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >
-                    <FiExternalLink size={16} />
-                  </motion.span>
-                </a>
+                <p className="text-gray-300">{cert.description}</p>
               </div>
               
               {/* Decorative corner accent */}
